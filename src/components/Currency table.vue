@@ -3,7 +3,7 @@
      <h1>Currency table</h1>
            <table>
              <th>currency</th>
-             <th>rate</th>
+             <th>Exchange rate</th>
              <tr v-for="product in products" :key="product.id">
                <td>{{product[0]}}</td>
                <td>{{product[1]}}</td>
@@ -43,6 +43,11 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
+h1{
+  color:white;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -58,9 +63,13 @@ table td, table th {
   padding: 8px;
 }
 
+table tr{
+  background-color: rgb(78 177 204);
+}
+
 table tr:nth-child(even){background-color: #f2f2f2;}
 
-table tr:hover {background-color: #ddd;}
+table tr:hover {background-color:aqua;}
 
 table th {
   padding-top: 12px;

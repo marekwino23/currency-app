@@ -1,7 +1,8 @@
 <template>
-   <div>
-     <h1>{{money}}</h1>
+   <div class="add">
+     <h1>Add currency</h1>
             <select v-model="currency">
+                <option value=""></option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
                 <option value="GPB">GPB</option>
@@ -28,10 +29,16 @@ export default {
 
 methods: {
   addCurrency() {
-    this.$store.dispatch('addCurrency',{
+    if(this.currency === "" || this.number === 0){
+      this.$swal('Lack of data');
+    }
+    else{
+      this.$store.dispatch('addCurrency',{
       currency:this.currency,
       rate:this.number,
     })
+    this.$swal('Currency was added');
+    }  
   }
 }
 }
@@ -63,7 +70,11 @@ button {
 }
 
 button:hover{
-  background-color: blue;
+  background-color:green;
+}
+
+h1{
+  color:white;
 }
 
 h3 {

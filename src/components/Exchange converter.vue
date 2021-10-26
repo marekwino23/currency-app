@@ -3,10 +3,12 @@
            <h1>Exchange</h1>
            <input v-model="number" type="number">
            <select id="currency">
-                <option v-for="currency in currencies" :key="currency.id" :value="currency">{{currency}}</option>
+                <option value=""></option>
+                <option v-for="currency in currencies" :key="currency.id" :value="currency">{{currency.toUpperCase()}}</option>
             </select> 
             <button @click="convertCurrency()">converter to PLN</button>
-            <p>converter:{{this.converted_number}}PLN </p>
+            <br>
+            <label>Data after converted: <input type="number" :value="this.converted_number"/> PLN</label>
         </div>
 </template>
 
@@ -37,16 +39,22 @@ export default {
       convertCurrency(){
           let select = document.getElementById('currency');
           let money = select.options[select.selectedIndex].value
+          if(money === "" && this.number === 0){
+            this.$swal('lack of number');
+          }
+          else{
               if(money === "usd"){
-                  this.converted_number = this.number * 3.95
+                  this.converted_number = this.number * 3.95 
               }
               else if(money === "eur"){
-                  this.converted_number = this.number * 4.6
+                  this.converted_number = this.number * 4.6 
               }
               else if(money === "gpb"){
                   this.converted_number = this.number * 5.45
               }
+            this.$swal('Convert done');
           }
+        }
       }
   }
 </script>
@@ -56,6 +64,11 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
+h1,p{
+  color:white;
+}
+
 input[type=text],[type="number"], select {
   width: 26%;
   padding: 12px 20px;
@@ -65,6 +78,11 @@ input[type=text],[type="number"], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+label{
+  color:white;
+  font-weight: bold;
+}
+
 button {
   width: 25%;
   background-color:#4ca1af;
@@ -76,7 +94,7 @@ button {
   cursor: pointer;
 }
 button:hover{
-  background-color: blue;
+  background-color: rgb(24, 151, 173);
 }
 
 ul {

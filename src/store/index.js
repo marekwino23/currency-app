@@ -12,12 +12,4 @@ export default createStore({
                     return state;
       },
   },
-//   mutations:{
-//     ADD_TO_CARD({state}, {currency,rate}) {
-//         state.product.push({
-//             currency,
-//             rate
-//         })
-//       },
-//   }
 });
